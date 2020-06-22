@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 const app = express();
 
-var db = require("./config/keys").MongoURI;
+var db = process.env.MongoURI;
 mongoose
   .connect(db, {
     useNewUrlParser: true,
