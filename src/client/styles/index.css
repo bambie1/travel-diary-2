@@ -1,0 +1,47 @@
+.whole-page.cover-container.p-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+body {
+  background: linear-gradient(to right, rgb(219, 230, 246), rgb(197, 121, 109));
+}
+.trips-page {
+  margin-top: 14px !important;
+}
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+a:hover {
+  color: #c98d86 !important;
+}
+
+.theme-btn {
+  background: #c98d86;
+  border-color: #c98d86;
+}
+.login-register {
+  max-width: 500px;
+}
+.trip-card {
+  max-width: 600px;
+}
+.trip-card #delete-trip {
+  display: none;
+}
+.trip-card:hover #delete-trip {
+  display: block;
+}
+
+@media only screen and (min-width: 576px) {
+  main.content {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 676px) {
+  .home-br {
+    display: none;
+  }
+}

@@ -1,0 +1,22 @@
+{{> header name=user.name}}
+<main class="content m-sm-auto">
+  <section class="pb-1 text-center" id="trip-quote">
+    <h1 id="quote-text">
+      Your next trip <br class="home-br"> starts here
+    </h1>
+    <p id="sub-quote" class="lead">Get excited for your upcoming vacations by adding them to your personalized travel
+      diary.</p>
+
+    {{#if user}}
+    <p class="lead">
+      <a href="/trips" class="btn btn-lg btn-outline-dark">View trips</a>
+    </p>
+    {{else}}
+    <p class="lead">
+      <a href="/users/register" class="btn btn-lg btn-outline-dark">Get started</a>
+    </p>
+
+    {{/if}}
+
+  </section>
+</main>

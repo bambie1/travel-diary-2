@@ -1,0 +1,53 @@
+{{> header name = name}}
+{{#if trips}}
+<main class="content trips-page m-auto text-center">
+  <div class="d-flex mb-4 justify-content-between">
+    <h3>Hi, {{name}}</h3>
+    <a href="/addTrip" class="btn btn-outline-dark mb-2">
+      Add trip
+    </a>
+  </div>
+  <ul class="list-group">
+    {{#each trips}}
+    <div class="card m-auto mb-5 trip-card">
+      {{!-- <img class="card-img-top" src={{this.tripImg}} alt="Card image cap"> --}}
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{this.tripLocation}}</h5>
+          <a href="/trips/{{this._id}}"><i class="far fa-edit"></i></a>
+        </div>
+        <p class="card-text">Trip date: {{this.tripDate}}</p>
+        <p>
+          <a class="btn btn-outline-dark" data-toggle="collapse" href="#trip-{{this._id}}" role="button"
+            aria-expanded="false" aria-controls="trip-notes">
+            Trip notes
+          </a>
+        </p>
+        <div class="collapse" id="trip-{{this._id}}">
+          <textarea class="form-control" aria-label="With textarea" readonly>{{this.tripNotes}}</textarea>
+        </div>
+        <div class="d-flex justify-content-between">
+          <a href="#">Share</a>
+          <a href="/trips/delete/{{this._id}}" id="delete-trip" class="align-self-end btn btn-danger"
+            onclick="return confirm('Delete trip?')">Delete</a>
+        </div>
+      </div>
+
+
+    </div>
+    {{/each}}
+  </ul>
+</main>
+{{else}}
+<main class="content trips-page m-auto text-center">
+  <div class="jumbotron">
+    <h3 class="display-3">Hi, {{name}}</h3>
+    <h1 class="display-4">No trips added yet...</h1>
+    <p class="lead">Let's fix that right away!!</p>
+    <hr class="my-4">
+    <a href="/addTrip" class="btn btn-outline-dark btn-lg">
+      Add trip
+    </a>
+  </div>
+</main>
+{{/if}}
