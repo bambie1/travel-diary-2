@@ -70,5 +70,6 @@ app.use(function (req, res, next) {
 
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
+app.use("*", require("./routes/404"));
 
 module.exports = app;

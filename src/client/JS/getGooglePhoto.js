@@ -3,7 +3,6 @@ const axios = require("axios");
 exports.getGooglePhoto = async (query) => {
   var imageUrl;
   try {
-    imageUrl = "yes";
     var googleData = await axios.get(
       `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
         query
