@@ -1,7 +1,8 @@
 const axios = require("axios");
 
 exports.getGooglePhoto = async (query) => {
-  var imageUrl;
+  var imageUrl =
+    "https://img.freepik.com/free-vector/plain-blue-sky-background_1308-20781.jpg?size=626&ext=jpg";
   try {
     var googleData = await axios.get(
       `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
