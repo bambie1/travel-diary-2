@@ -17,7 +17,9 @@ a {
 a:hover {
   color: #c98d86 !important;
 }
-
+.card-city-img {
+  height: 150px;
+}
 .theme-btn {
   background: #c98d86;
   border-color: #c98d86;
@@ -26,7 +28,8 @@ a:hover {
   max-width: 500px;
 }
 .trip-card {
-  max-width: 600px;
+  max-width: 400px;
+  padding: 0px !important;
 }
 .trip-card #delete-trip {
   display: none;

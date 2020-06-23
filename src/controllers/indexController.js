@@ -1,9 +1,14 @@
 const User = require("../models/User");
+const { getGooglePhoto } = require("../client/JS/getGooglePhoto");
 
 exports.addTrip = async (req, res) => {
   var tripWithPhoto = req.body;
-  tripWithPhoto.tripImg =
-    "https://maps.google.com/maps/contrib/108966430479377047383";
+  try {
+    tripWithPhoto.tripImg = await getGooglePhoto(req.body.tripLocation);
+  } catch (error) {
+    console.log("error: ", error);
+  }
+
   User.findOneAndUpdate(
     { _id: req.user._id },
     { $push: { trips: tripWithPhoto } },
@@ -19,6 +24,8 @@ exports.getAllTrips = (req, res) => {
 
 exports.updateTrip = async (req, res) => {
   try {
+    var tripImg = await getGooglePhoto(req.body.tripLocation);
+    console.log("google photo: ", tripImg);
     var doc = await User.findOneAndUpdate(
       {
         _id: req.user._id,
@@ -29,6 +36,7 @@ exports.updateTrip = async (req, res) => {
           "trips.$.tripLocation": req.body.tripLocation,
           "trips.$.tripDate": req.body.tripDate,
           "trips.$.tripNotes": req.body.tripNotes,
+          "trips.$.tripImg": tripImg,
         },
       }
     );

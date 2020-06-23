@@ -5,7 +5,6 @@ const passport = require("passport");
 
 exports.registerUser = (req, res) => {
   const errors = validationResult(req);
-  console.log("register user method");
   const { name, email, password, password2 } = req.body;
   if (!errors.isEmpty()) {
     errorsBody = handleValidation(errors);
@@ -18,7 +17,6 @@ exports.registerUser = (req, res) => {
     email,
     password,
   });
-  console.log("after user model");
   bcrypt.genSalt(10, (err, salt) =>
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if (err) throw err;
@@ -33,9 +31,7 @@ exports.registerUser = (req, res) => {
 
 exports.loginUser = (req, res, next) => {
   const { email, password } = req.body;
-  console.log("login user method");
   passport.authenticate("local", function (err, user, info) {
-    console.log("inside passport");
     if (err) return next(err);
     if (!user) {
       return res.render("login", {
