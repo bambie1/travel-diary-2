@@ -11,6 +11,14 @@ exports.getGooglePhoto = async (query) => {
         process.env.GOOGLE_API
       }`
     );
+    console.log(
+      `query: https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
+        query
+      )}&inputtype=textquery&fields=place_id&locationbias=circle:2000@47.6918452,-122.2226413&key=${
+        process.env.GOOGLE_API
+      }`
+    );
+    console.log("data: ", googleData.data);
     var placeId = googleData.data.candidates[0].place_id;
 
     var placeData = await axios.get(
